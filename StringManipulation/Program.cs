@@ -1,4 +1,6 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using Microsoft.Extensions.Logging;
+using StringManipulation;
+
 var loggerFactory = LoggerFactory.Create(builder =>
 {
     // Add console logger
@@ -121,4 +123,5 @@ while (true)
 
     Console.WriteLine("");
     Console.WriteLine("///");
+}
 
