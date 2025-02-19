@@ -2,7 +2,8 @@
 
 public class StringOperationsTest
 {
-    [Fact]
+    // si se requiere omitir un test (como en jasmin con xit o xdescription) se usa Skip
+    [Fact(Skip = "Test de skip - TICKET-fix")]
     public void ConcatenateStrings()
     {
         // Arrange
