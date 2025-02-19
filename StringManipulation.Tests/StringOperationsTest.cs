@@ -84,4 +84,19 @@ public class StringOperationsTest
         // Assert
         Assert.Equal(5, result);
     }
+
+    // un test no puede tener parametros por lo que se tiene que usar otra propiedad
+    // [Fact]
+    [Theory] // util para comprobar varios escenarios de pruebas
+    [InlineData("V", 5)] // usando InlineData se puede pasar argumentos al metodo del test
+    [InlineData("III", 3)]
+    [InlineData("X", 10)]
+    public void FromRomanToNumber(string romanNumber, int expected)
+    {
+        var strOperations = new StringOperations();
+
+        var result = strOperations.FromRomanToNumber(romanNumber);
+
+        Assert.Equal(expected, result);
+    }
 }
