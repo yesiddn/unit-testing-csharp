@@ -1,4 +1,7 @@
-﻿namespace StringManipulation.Tests;
+﻿using Microsoft.Extensions.Logging;
+using Moq;
+
+namespace StringManipulation.Tests;
 
 public class StringOperationsTest
 {
@@ -99,5 +102,16 @@ public class StringOperationsTest
         var result = strOperations.FromRomanToNumber(romanNumber);
 
         Assert.Equal(expected, result);
+    }
+
+    [Fact]
+    public void CountOccurrences()
+    {
+        var mockLogger = new Mock<ILogger<StringOperations>>(); // usando la libreria Moq se crea el mock de la deependencia deseada
+        var strOperations = new StringOperations(mockLogger.Object); // se le pasa el objet de la deependencia
+
+        var result = strOperations.CountOccurrences("Hello world", 'l');
+
+        Assert.Equal(3, result);
     }
 }
