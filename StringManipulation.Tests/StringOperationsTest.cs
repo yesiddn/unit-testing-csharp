@@ -114,4 +114,20 @@ public class StringOperationsTest
 
         Assert.Equal(3, result);
     }
+
+    [Fact]
+    public void ReadFile()
+    {
+        var strOperations = new StringOperations();
+        var mockFileReader = new Mock<IFileReaderConector>();
+        // a ReadString se le pasa como argumento el valor al cual le queremos hacer test
+        mockFileReader.Setup(m => m.ReadString("file.txt")).Returns("Reading file"); // el metodo Setup permite crear una logica al mock
+        // si queremos que nos retorne lo mismo para cualquier argumento usaremos It.IsAny
+        // mockFileReader.Setup(m => m.ReadString(It.IsAny<string>())).Returns("Reading file");
+
+        var result = strOperations.ReadFile(mockFileReader.Object, "file.txt");
+
+        // este metodo es muy sencillo ya que solo esta retornando la respuesta del mock, pero en un caso en el que, por ejemplo, se retorne el contenido del archivo con un determinado formato, el Assert va a ser diferente, este es solo un ejemplo de como se configura la respuesta de un mock
+        Assert.Equal("Reading file", result);
+    }
 }
